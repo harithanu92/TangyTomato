@@ -1,0 +1,132 @@
+﻿@model TangyTomato.Models.MenuItemViewModels.MenuItemViewModel
+@using TangyTomato.Extensions
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //  getSubCategory(); 
+        /**Commenting this because we dont want to load sub category on onload of page in Edit page scenario.
+          we want only when categpry id change scenario which is already done in down ** /
+        $('#CategoryId').change(function () {
+            getSubCategory();
+        })
+/*
+ * ****This java script is used to set the form data to the required key value pairing*****
+        $("#btn-sumbit").click(function (event) {
+            event.preventDefault();
+
+            //Append the parameter to the form
+            var practiceVal = $('#SubCategoryId').val();
+            window.alert("SubCategoryId#####" + practiceVal);
+            $('<input />').attr('type', '')
+                .attr('name', "SubCategoryId").attr('value', practiceVal)
+                .appendTo('#formHome');
+
+            //Submit
+            $('#formHome').submit();
+        });*/
+    });
+    function getSubCategory() {
+            var url = '@Url.Content("~/")' + "MenuItems/GetSubCategory";
+            var ddlSource = "#CategoryId";
+            $.getJSON(url, { CategoryID: $(ddlSource).val() }, function (data) {
+                var items = '';
+                $("#SubCategoryId").empty();
+                $.each(data, function (i, subcategory) {
+                    items += "<option value ='" + subcategory.value + "'>" + subcategory.text + "</option>";
+                });
+                $('#SubCategoryId').html(items);
+            })
+        }
+</script>
+
+<br />
+<h2>Edit</h2>
+<br />
+
+<form id="formHome" method="post" enctype="multipart/form-data">
+    <div class="form-border row">
+        <input type="hidden" asp-for="MenuItem.Id" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="MenuItem.Name" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="MenuItem.Name" class="form-control" />
+                </div>
+                <span asp-validation-for="MenuItem.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="MenuItem.Description" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="MenuItem.Description" class="form-control" />
+                </div>
+                <span asp-validation-for="MenuItem.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="MenuItem.Price" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="MenuItem.Price" class="form-control" />
+                </div>
+                <span asp-validation-for="MenuItem.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="MenuItem.Image" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <input type="file" name="files" multiple class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="MenuItem.CategoryId" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="@Model.MenuItem.CategoryId" id="CategoryId" asp-items="Model.Category.ToSelectListItem(Model.MenuItem.CategoryId)" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="MenuItem.SubCategoryId" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="@Model.MenuItem.SubCategoryId" id="SubCategoryId" asp-items="Model.SubCategory.ToSelectListItem(Model.MenuItem.SubCategoryId)" class="form-control"></select>   <!--asp-items="@(new SelectList(string.Empty,"Id","Name"))"-->
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="MenuItem.Spicyness" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="@Model.MenuItem.Spicyness" asp-items="Html.GetEnumSelectList<MenuItem.EScipy>()" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3">
+            <img src="@Model.MenuItem.Image" width="100%" style="border-radius:5px;border:1px solid #bbb9b9;" />
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" id="btn-sumbit" value="Update" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-success">Back to List</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,96 @@
+﻿@model TangyTomato.Models.UsersViewModels.UserViewModel;
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+  $( function() {
+      $( "#LockoutEndDatePicker" ).datepicker();
+    });
+
+</script>
+
+<br />
+<h2>Edit Users</h2>
+<form asp-action="Edit">
+    <div class="form-border" >
+        <div style="width:500px; margin:0 auto;">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ApplicationUser.Id" />
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="ApplicationUser.FirstName" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="ApplicationUser.FirstName" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="ApplicationUser.LastName" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="ApplicationUser.LastName" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="ApplicationUser.Email" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="ApplicationUser.Email" disabled class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="ApplicationUser.PhoneNumber" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="ApplicationUser.PhoneNumber" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="ApplicationUser.LockoutEnd" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="LockoutEndString" class="form-control" id="LockoutEndDatePicker" />
+
+                    @*
+                        value=@Model.LockoutEnd.Value.Date.ToString("dd/MM/yyyy")
+
+                          var stringValue = @Html.Partial("_DateTimeOffsetToStringPartial", Model.LockoutEnd)
+                          @Html.Partial("_Date", Model.LockoutEnd)
+                          @Html.EditorFor(m => m.LockoutEnd, "LockoutEndDatePicker")
+        <input asp-for="LockoutEnd" class="form-control" id="LockoutEndDatePicker"/>
+                    *@
+                </div>
+            </div>
+            <div class="form-group row form-group-lg">
+                <div class="col-3">
+                    <label asp-for="ApplicationUser.LockoutReason" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <textarea class="form-control rounded-0" asp-for="ApplicationUser.LockoutReason" rows="6"></textarea>
+                    <!-- <input asp-for="LockoutReason" class="form-control" style="height:90px" /> --->
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="ApplicationUser.AccessFailedCount" class="control-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="ApplicationUser.AccessFailedCount" class="form-control" />
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" /> &nbsp;&nbsp;
+                <a asp-action="Index" class="btn btn-success">Back to List</a>
+            </div>
+        </div>
+    </div>
+</form>

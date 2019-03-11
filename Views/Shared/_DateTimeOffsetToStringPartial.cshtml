@@ -1,0 +1,12 @@
+﻿@model System.DateTimeOffset?
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    string value = null;
+    if (this.Model.HasValue)
+    {
+        value = this.Model.Value.Date.ToString("MM/dd/yyyy");
+    }
+}
