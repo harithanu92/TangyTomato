@@ -1,0 +1,12 @@
+C:\Users\JEBISH_PC\source\repos\TangyTomato\TangyTomato\bin\Debug\netcoreapp2.0\TangyTomato.deps.json
+C:\Users\JEBISH_PC\source\repos\TangyTomato\TangyTomato\bin\Debug\netcoreapp2.0\TangyTomato.runtimeconfig.json
+C:\Users\JEBISH_PC\source\repos\TangyTomato\TangyTomato\bin\Debug\netcoreapp2.0\TangyTomato.runtimeconfig.dev.json
+C:\Users\JEBISH_PC\source\repos\TangyTomato\TangyTomato\bin\Debug\netcoreapp2.0\TangyTomato.dll
+C:\Users\JEBISH_PC\source\repos\TangyTomato\TangyTomato\bin\Debug\netcoreapp2.0\TangyTomato.pdb
+C:\Users\JEBISH_PC\source\repos\TangyTomato\TangyTomato\obj\Debug\netcoreapp2.0\TangyTomato.csproj.CoreCompileInputs.cache
+C:\Users\JEBISH_PC\source\repos\TangyTomato\TangyTomato\obj\Debug\netcoreapp2.0\TangyTomato.AssemblyInfoInputs.cache
+C:\Users\JEBISH_PC\source\repos\TangyTomato\TangyTomato\obj\Debug\netcoreapp2.0\TangyTomato.AssemblyInfo.cs
+C:\Users\JEBISH_PC\source\repos\TangyTomato\TangyTomato\obj\Debug\netcoreapp2.0\TangyTomato.dll
+C:\Users\JEBISH_PC\source\repos\TangyTomato\TangyTomato\obj\Debug\netcoreapp2.0\TangyTomato.pdb
+C:\Users\JEBISH_PC\source\repos\TangyTomato\TangyTomato\obj\Debug\netcoreapp2.0\TangyTomato.csprojAssemblyReference.cache
+C:\Users\JEBISH_PC\source\repos\TangyTomato\TangyTomato\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
